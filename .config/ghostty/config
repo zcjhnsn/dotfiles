@@ -1,0 +1,16 @@
+# The theme
+theme = tokyonight-storm
+
+background = 1a1b26
+
+# set opacity
+background-opacity = 0.8
+
+# set padding
+window-padding-x = 3
+window-padding-y = 12,0
+
+# title bar
+macos-titlebar-style = "hidden"
+
+
