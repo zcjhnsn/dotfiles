@@ -30,4 +30,4 @@ stow .
 
 ## Info
 
-Inspired by [this youtube video](https://youtu.be/y6XCebnB9gs?si=LyeKJ49s7Kj-K8YQ)
+Inspired by [this youtube video](https://youtu.be/y6XCebnB9gs?si=LyeKJ49s7Kj-K8YQ) and [this repo](https://github.com/protiumx/.dotfiles)
