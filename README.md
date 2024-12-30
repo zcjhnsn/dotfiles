@@ -27,3 +27,7 @@ then use GNU Stow to create symlinks
 ```
 stow .
 ```
+
+## Info
+
+Inspired by [this youtube video](https://youtu.be/y6XCebnB9gs?si=LyeKJ49s7Kj-K8YQ)
