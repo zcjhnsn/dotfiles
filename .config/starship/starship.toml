@@ -1,0 +1,122 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$kotlin\
+$lua\
+$python\
+$ruby\
+$rust\
+$swift\
+$aws\
+docker_context\
+$jobs\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'tokyonight'
+add_newline = true
+
+[aws]
+symbol = ' '
+style = 'yellow'
+format = '[$symbol($profile )(\[$duration\] )]($style)'
+
+[cmd_duration]
+min_time = 500
+style = 'fg:gray'
+format = '[$duration]($style)'
+
+[directory]
+style = 'bold fg:blue0'
+format = '[$path ]($style)'
+truncation_length = 3
+truncation_symbol = '…/'
+truncate_to_repo = false
+
+[directory.substitutions]
+'Documents' = '󰈙'
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
+
+[docker_context]
+style = 'fg:blue'
+symbol = '󰡨 '
+format = '[$symbol]($style) $path'
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
+detect_extensions = ['Dockerfile']
+
+[git_branch]
+style = 'fg:green'
+symbol = ' '
+format = '[on](white) [$symbol$branch ]($style)'
+
+[git_status]
+style = 'fg:green'
+format = '([$all_status$ahead_behind]($style) )'
+
+[fill]
+symbol = ' '
+
+[jobs]
+symbol = ' '
+style = 'blue7'
+number_threshold = 1
+format = '[$symbol]($style)'
+
+[kotlin]
+style = 'fg:purple'
+symbol = ' '
+
+[lua]
+symbol = ' '
+
+[python]
+style = 'teal'
+symbol = ' '
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = true
+pyenv_prefix = ''
+
+[ruby]
+style = 'red'
+symbol = ' '
+format = '[${symbol}(${version} )]($style)'
+
+[rust]
+style = 'orange'
+symbol = ' '
+
+[swift]
+style = 'red1'
+symbol = ' '
+format = '[${symbol}(${version} )]($style)'
+
+[line_break]
+disabled = false
+
+[palettes.tokyonight]
+black = '#15161e'
+blue = '#7aa2f7'
+blue0 = '#3d59a1'
+blue1 = '#2ac3de'
+blue2 = '#0db9d7'
+blue5 = '#89ddff'
+blue6 = '#b4f9f8'
+blue7 = '#394b70'
+cyan = '#7dcfff'
+green = '#9ece6a'
+green1 = '#73daca'
+green2 = '#41a6b5'
+magenta = '#bb9af7'
+magenta2 = '#ff007c'
+orange = '#ff9e64'
+purple = '#9d7cd8'
+red = '#f7768e'
+red1 = '#db4b4b'
+teal = '#1abc9c'
+terminal_black = '#414868'
+yellow = '#e0af68'
