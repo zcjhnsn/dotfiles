@@ -20,7 +20,7 @@ cleanup() {
 }
 
 wait_input() {
-	read -p -r "Press enter to continue: "
+	read -p "press enter to continue: " -r
 }
 
 main() {
@@ -48,7 +48,7 @@ main() {
 	wait_input
 	install_macos_apps
 
-	install_masApps
+	#install_mas_apps
 	success "Finished installing macOS apps"
 
 	info "################################################################################"
