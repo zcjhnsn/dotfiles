@@ -1,10 +1,11 @@
-taps=(
-)
+#taps=(
+#)
 
 packages=(
 	asdf
 	gnupg
 	gnutls
+	jesseduffield/lazygit/lazygit
 	luajit
 	mas
 	neovim
@@ -27,7 +28,7 @@ packages=(
 
 install_packages() {
 	info "Configuring taps"
-	apply_brew_taps "${taps[@]}"
+	#apply_brew_taps "${taps[@]}"
 
 	info "Installing packages..."
 	install_brew_formulas "${packages[@]}"
@@ -37,4 +38,5 @@ install_packages() {
 }
 
 post_install_packages() {
+	info "Update this if post install config necessary"
 }
