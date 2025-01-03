@@ -11,8 +11,10 @@ alias buildsim='swift run devtools simulator'
 # Interact with `.dotfiles` bare repo from any directory on disk
 alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
-alias ls='ls -GFh'
-alias ll='ls -FGalh'
+alias ls='lsd -GFh'
+alias ll='lsd -FGalh'
+alias lst='lsd --tree'
+alias llt='lsd -FGalh --tree'
 
 alias dc='docker-compose'
 
