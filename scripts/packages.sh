@@ -6,6 +6,7 @@ packages=(
 	gnupg
 	gnutls
 	jesseduffield/lazygit/lazygit
+	lsd
 	luajit
 	mas
 	neovim
