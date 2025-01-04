@@ -1,5 +1,5 @@
 apps=(
-	alfred
+#	alfred
 	docker
 	ghostty
 	gitkraken
