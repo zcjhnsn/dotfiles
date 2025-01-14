@@ -209,7 +209,7 @@ local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-  if vim.v.shell_error ~= 0 then 
+  if vim.v.shell_error ~= 0 then
     error('Error cloning lazy.nvim:\n' .. out)
   end
 end ---@diagnostic disable-next-line: undefined-field
@@ -273,7 +273,7 @@ require('lazy').setup({
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
-            -- delay between pressing a key and opening which-key (milliseconds)
+      -- delay between pressing a key and opening which-key (milliseconds)
       -- this setting is independent of vim.opt.timeoutlen
       delay = 0,
       icons = {
@@ -452,7 +452,7 @@ require('lazy').setup({
     },
   },
   { 'Bilal2453/luvit-meta', lazy = true },
-  { 
+  {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -619,17 +619,37 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
+        gopls = {},
+        pyright = {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          filetypes = { 'python', '.py' },
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = 'basic', -- off, basic, standard, strict, all
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                autoImportCompletions = true,
+                diagnosticsMode = 'openFilesOnly', -- workspace, openFilesOnly
+                diagnosticSeverityOverrides = {
+                  reportUnknownMemberType = false,
+                  reportUnknownArgumentType = false,
+                  -- reportUnusedClass = "warning",
+                  -- reportUnusedFunction = "warning",
+                  reportUndefinedVariable = false, -- ruff handles this with F822
+                },
+              },
+            },
+          },
+        },
         sourcekit = {
-          root_dir = lspconfig.util.root_pattern(
-            '.git',
+          root_dir = require('lspconfig').util.root_pattern(
+            --'.git',
             'Package.swift',
             '*.xcodeproj',
             'compile_commands.json'
           ),
-        },
-        gopls = {},
-        pyright = {
-          capabilities = capabilities,
         },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -667,7 +687,17 @@ require('lazy').setup({
       --
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
+      --      local ensure_installed = vim.tbl_keys(servers or {})
+      -- filter out sourcekit lsp since mason doesn't support it
+      local filtered_servers = {}
+      for key, _ in pairs(servers) do
+        if key ~= 'sourcekit' then
+          table.insert(filtered_servers, key)
+        end
+      end
+
+      local ensure_installed = filtered_servers
+      print(vim.inspect(ensure_installed))
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
@@ -684,11 +714,13 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
         },
+        ensure_installed = ensure_installed,
+        automatic_installation = false,
       }
 
-      -- NOTE: Swift LSP not available in Mason 
-      lspconfig['sourcekit'].setup({
-        cmd = {'$TOOLCHAIN_PATH/usr/bin/sourcekit-lsp'},
+      -- NOTE: Swift LSP not available in Mason
+      require('lspconfig')['sourcekit'].setup {
+        cmd = { '$TOOLCHAIN_PATH/usr/bin/sourcekit-lsp' },
         capabilities = {
           workspace = {
             didChangeWatchedFiles = {
@@ -696,8 +728,8 @@ require('lazy').setup({
             },
           },
         },
-        on_attach = on_attach,
-      })
+        --on_attach = on_attach,
+      }
       -- require('lspconfig').sourcekit.setup {
       --  cmd = { '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp' },
       --  capabilities = {
@@ -747,7 +779,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         swift = { 'swiftformat' },
         -- Conform can also run multiple formatters sequentially
-        python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
@@ -883,13 +915,13 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      require('tokyonight').setup({
+      require('tokyonight').setup {
         style = night,
         transparent = true,
         on_colors = function(colors)
           --colors.bg = colors.none
-        end
-      })
+        end,
+      }
       vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like:
