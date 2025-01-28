@@ -965,10 +965,14 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
+      -- Pair brackets, quotes, etc.
+      require('mini.pairs').setup()
+
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
 
       -- split args if on single line, join otherwise
+      -- gS to toggle
       require('mini.splitjoin').setup()
     end,
   },
