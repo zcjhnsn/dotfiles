@@ -263,6 +263,12 @@ plugins {
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
 }
+
+ui {
+    pane_frames {
+        rounded_corners true
+    }
+}
  
 // Use a simplified UI without special fonts (arrow glyphs)
 // Options:
