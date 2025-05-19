@@ -17,6 +17,7 @@ packages=(
 	starship
 	stow
 	swiftlint
+	TheZoraiz/ascii-image-converter/ascii-image-converter
 	tree
 	tree-sitter
 	xcbeautify
