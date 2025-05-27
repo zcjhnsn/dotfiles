@@ -740,8 +740,21 @@ require('lazy').setup({
       }
 
       -- NOTE: Swift LSP not available in Mason
+      local opts = { noremap = true, silent = true }
+      local on_attach = function(_, bufnr)
+        opts.buffer = bufnr
+
+        opts.desc = 'Show line diagnostics'
+        vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
+
+        opts.desc = 'Show documentation for what is under cursor'
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+
+        opts.desc = 'Show LSP definition'
+        vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions trim_text=true<cr>', opts)
+      end
       require('lspconfig')['sourcekit'].setup {
-        cmd = { '$TOOLCHAIN_PATH/usr/bin/sourcekit-lsp' },
+        cmd = { vim.trim(vim.fn.system 'xcrun -f sourcekit-lsp') },
         capabilities = {
           workspace = {
             didChangeWatchedFiles = {
@@ -749,7 +762,7 @@ require('lazy').setup({
             },
           },
         },
-        --on_attach = on_attach,
+        on_attach = on_attach,
       }
       -- require('lspconfig').sourcekit.setup {
       --  cmd = { '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp' },
