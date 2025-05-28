@@ -3,6 +3,7 @@
 
 packages=(
 	asdf
+	fd
 	gnupg
 	gnutls
 	jesseduffield/lazygit/lazygit
