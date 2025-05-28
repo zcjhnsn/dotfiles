@@ -3,6 +3,8 @@ theme = tokyonight-storm
 
 background = 1a1b26
 
+font-family = "Berkeley Mono"
+
 # set opacity
 background-opacity = 0.8
 
@@ -12,5 +14,3 @@ window-padding-y = 12,0
 
 # title bar
 macos-titlebar-style = "hidden"
-
-
