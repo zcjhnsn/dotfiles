@@ -52,5 +52,8 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
 eval "$(zellij setup --generate-auto-start zsh)"
 
+# GPG sign git commits
+export GPG_TTY=$(tty)
+
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

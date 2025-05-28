@@ -2,6 +2,7 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
+  ---@module 'snacks'
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
@@ -9,6 +10,18 @@ return {
     image = {},
     indent = { enabled = true },
     input = { enabled = true },
+    lazygit = {
+      configure = true,
+      config = {
+        -- Add custom lazygit config here
+        -- e.g. args = { '--some-arg' }
+        git = {
+          commit = {
+            signoff = true, -- Add `--signoff` to commit messages
+          },
+        },
+      },
+    },
     notifier = {
       enabled = true,
       timeout = 3000,
