@@ -14,9 +14,11 @@ packages=(
 	node
 	openssl@3
 	python@3.13
+	shfmt
 	sqlite
 	starship
 	stow
+	swiftformat
 	swiftlint
 	TheZoraiz/ascii-image-converter/ascii-image-converter
 	tree
