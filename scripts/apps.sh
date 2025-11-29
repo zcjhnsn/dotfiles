@@ -3,6 +3,7 @@ apps=(
 	docker
 	ghostty
 	gitkraken
+	karabiner-elements
 	nikitabobko/tap/aerospace
 	slack
 	tuple
