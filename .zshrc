@@ -9,10 +9,10 @@ alias builddev='swift run devtools device'
 alias buildsim='swift run devtools simulator'
 
 # Interact with `.dotfiles` bare repo from any directory on disk
-alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+#alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
-alias ls='lsd -GFh'
-alias ll='lsd -FGalh'
+alias ls='lsd -Fah --group-dirs first'
+alias ll='lsd -Falh --group-dirs first'
 alias lst='lsd --tree'
 alias llt='lsd -FGalh --tree'
 
@@ -24,6 +24,7 @@ alias ga='git add'
 alias gb='git branch'
 alias gcm='git commit -m'
 alias gfa='git fetch --all'
+alias gg='lazygit'
 alias gl='git log'
 alias gpoh='git push -u origin HEAD'
 alias gpom='git push origin master'
@@ -50,10 +51,12 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
-eval "$(zellij setup --generate-auto-start zsh)"
+#eval "$(zellij setup --generate-auto-start zsh)"
 
 # GPG sign git commits
 export GPG_TTY=$(tty)
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+eval "$(zoxide init zsh)"
