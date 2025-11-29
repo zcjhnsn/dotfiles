@@ -15,3 +15,26 @@ window-padding-y = 12,0
 
 # title bar
 macos-titlebar-style = "hidden"
+
+# cursor style
+cursor-style = block
+shell-integration-features = no-cursor
+
+# keybindings
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
+
+keybind = ctrl+a>h=new_split:left
+keybind = ctrl+a>j=new_split:down
+keybind = ctrl+a>k=new_split:up
+keybind = ctrl+a>l=new_split:right
+
+keybind = ctrl+a>f=toggle_split_zoom
+keybind = ctrl+a>x=close_surface
+
+keybind = ctrl+a>n=next_tab
+keybind = ctrl+a>p=previous_tab
+
+window-save-state = always
