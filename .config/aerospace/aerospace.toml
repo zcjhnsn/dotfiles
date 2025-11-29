@@ -196,6 +196,10 @@ run = ['move-node-to-workspace t']
 if.app-id = 'com.axosoft.gitkraken'
 run = ['move-node-to-workspace g']
 
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = ['move-node-to-workspace r']
+
 # Obsidian
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
@@ -204,7 +208,7 @@ run = ['move-node-to-workspace o']
 # Outlook
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
-run = ['move-node-to-workspace m']
+run = ['move-node-to-workspace e']
 
 # Passwords
 [[on-window-detected]]
