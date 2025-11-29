@@ -1,12 +1,13 @@
 # The theme
-theme = tokyonight-storm
+theme = TokyoNight
+#theme = Matte Black
 
-background = 1a1b26
+##background = 1a1b26
 
 font-family = "Berkeley Mono"
 
 # set opacity
-background-opacity = 0.8
+#background-opacity = 0.8
 
 # set padding
 window-padding-x = 3
