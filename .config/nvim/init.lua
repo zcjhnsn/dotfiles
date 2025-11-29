@@ -169,6 +169,9 @@ vim.o.confirm = true
 -- For catppuccin theme
 vim.o.termguicolors = true
 
+-- for obsidian.nvim
+vim.o.conceallevel = 2
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -735,6 +738,7 @@ require('lazy').setup({
             },
           },
         },
+        marksman = {},
         -- ruby_lsp = {},
         -- sorbet = {}, -- also ruby
       }
