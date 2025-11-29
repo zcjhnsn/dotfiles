@@ -27,6 +27,7 @@ packages=(
 	xcode-build-server
 	xz
 	zellij
+	zoxide
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
