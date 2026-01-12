@@ -373,7 +373,7 @@ require('lazy').setup({
       spec = {
         { '<leader>d', group = '[D]ebug' },
         { '<leader>g', group = '[G]it' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>h', group = '[H]arpoon' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>u', group = '[U]ser Interface' },
@@ -444,6 +444,15 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          path_display = {
+            shorten = {
+              len = 1,
+              exclude = { -1 },
+            },
+            'tail',
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -723,7 +732,7 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-
+        kotlin_lsp = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -791,23 +800,37 @@ require('lazy').setup({
         opts.desc = 'Show LSP definition'
         vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions trim_text=true<cr>', opts)
       end
-      require('lspconfig')['sourcekit'].setup {
-        cmd = { vim.trim(vim.fn.system 'xcrun -f sourcekit-lsp') },
-        capabilities = {
-          workspace = {
-            didChangeWatchedFiles = {
-              dynamicRegistration = true,
-            },
-          },
-        },
-        on_attach = on_attach,
-        root_dir = require('lspconfig').util.root_pattern(
-          --'.git',
-          'Package.swift',
-          '*.xcodeproj',
-          'compile_commands.json'
-        ),
-      }
+
+      -- vim.lsp.config('sourcekit', {
+      --   capabilities = capabilities,
+      --   on_attach = on_attach,
+      --   root_dir = function(_, callback)
+      --     callback(
+      --       require('lspconfig.util').root_pattern 'Package.swift'(vim.fn.getcwd())
+      --         or vim.fs.dirname(vim.fs.find('.git', { path = vim.fn.getcwd(), upward = true })[1])
+      --     )
+      --   end,
+      --   cmd = { vim.trim(vim.fn.system 'xcrun -f sourcekit-lsp') },
+      -- })
+      -- vim.lsp.enable 'sourcekit'
+
+      -- require('lspconfig')['sourcekit'].setup {
+      --   cmd = { vim.trim(vim.fn.system 'xcrun -f sourcekit-lsp') },
+      --   capabilities = {
+      --     workspace = {
+      --       didChangeWatchedFiles = {
+      --         dynamicRegistration = true,
+      --       },
+      --     },
+      --   },
+      --   on_attach = on_attach,
+      --   root_dir = require('lspconfig').util.root_pattern(
+      --     --'.git',
+      --     'Package.swift',
+      --     '*.xcodeproj',
+      --     'compile_commands.json'
+      --   ),
+      -- }
     end,
   },
 
