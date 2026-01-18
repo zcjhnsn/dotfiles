@@ -748,6 +748,7 @@ require('lazy').setup({
           },
         },
         marksman = {},
+        bashls = {},
         -- ruby_lsp = {},
         -- sorbet = {}, -- also ruby
       }
