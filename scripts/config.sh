@@ -21,6 +21,7 @@ stow_dotfiles() {
 		".config/ghostty"
 		".config/nvim"
 		".config/starship"
+    ".config/tmux"
 		".config/zellij"
 		".gnupg"
 		".ssh"
@@ -40,3 +41,20 @@ stow_dotfiles() {
 	info "Stowing: $to_stow"
 	stow -d stow --verbose 1 --target "$HOME" "$to_stow"
 }
+
+install_tpm() {
+  local TPM_DIR="$HOME/.tmux/plugins/tpm"
+
+  # Ensure parent directory exists
+  mkdir -p "$(dirname "$TPM_DIR")"
+
+  # Clone only if TPM is not already installed
+  if [ -d "$TPM_DIR/.git" ]; then
+    echo "TPM already installed at $TPM_DIR"
+    return 0
+  fi
+
+  echo "Installing tmux plugin manager (TPM)..."
+  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+}
+

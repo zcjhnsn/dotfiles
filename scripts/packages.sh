@@ -3,6 +3,7 @@
 
 packages=(
 	asdf
+  bat
 	fd
 	gnupg
 	gnutls
@@ -23,13 +24,16 @@ packages=(
 	TheZoraiz/ascii-image-converter/ascii-image-converter
 	tree
 	tree-sitter
+  tmux
 	xcbeautify
 	xcode-build-server
+  xcp
 	xz
 	zellij
 	zoxide
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	zsh-vi-mode
 )
 
 install_packages() {

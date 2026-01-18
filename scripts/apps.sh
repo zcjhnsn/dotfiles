@@ -1,10 +1,9 @@
 apps=(
-#	alfred
 	docker
 	ghostty
-	gitkraken
 	karabiner-elements
 	nikitabobko/tap/aerospace
+  raycast
 	slack
 	tuple
 	visual-studio-code
