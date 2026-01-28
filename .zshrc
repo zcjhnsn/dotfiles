@@ -2,6 +2,9 @@
 . /opt/homebrew/opt/asdf/libexec/asdf.sh # set up asdf
 export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH" # set up mysql
 
+# Zellij
+export ZELLIJ_CONFIG_DIR=~/.config/zellij
+
 # aliases
 
 # Locus/Patient App
