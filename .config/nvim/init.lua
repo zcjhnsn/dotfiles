@@ -172,6 +172,9 @@ vim.o.termguicolors = true
 -- for obsidian.nvim
 vim.o.conceallevel = 2
 
+-- border style for floating windows
+-- vim.o.winborder = 'rounded'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -213,6 +216,17 @@ vim.keymap.set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
 vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
 vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
 vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
+
+-- Use J and K to move lines up and down in normal mode
+-- vim.keymap.set('n', 'J', ':m .+1<CR>==', { desc = 'Move current line down' })
+-- vim.keymap.set('n', 'K', ':m .-2<CR>==', { desc = 'Move current line up' })
+-- Use J and K to move lines up and down in visual mode
+-- vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down' })
+-- vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up' })
+
+vim.keymap.set('n', 'K', function()
+  vim.lsp.buf.hover { border = 'rounded', max_height = 25, max_width = 80 }
+end, { desc = 'Show documentation for what is under cursor' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -796,7 +810,9 @@ require('lazy').setup({
         vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
 
         opts.desc = 'Show documentation for what is under cursor'
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'K', function()
+          vim.lsp.buf.hover { border = 'rounded', max_height = 25, max_width = 80 }
+        end, opts)
 
         opts.desc = 'Show LSP definition'
         vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions trim_text=true<cr>', opts)
