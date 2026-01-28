@@ -23,6 +23,10 @@ cursor-style = block
 shell-integration-features = no-cursor
 
 # keybindings
+keybind = ctrl+h=unbind
+keybind = ctrl+j=unbind
+keybind = ctrl+k=unbind
+keybind = ctrl+l=unbind
 # keybind = ctrl+h=goto_split:left
 # keybind = ctrl+j=goto_split:bottom
 # keybind = ctrl+k=goto_split:top
